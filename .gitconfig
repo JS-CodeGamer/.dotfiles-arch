@@ -1,0 +1,11 @@
+[user]
+	email = 85994817+JS-CodeGamer@users.noreply.github.com
+	name = Jagteshver Singh
+[init]
+	defaultBranch = main
+[diff]
+  tool = nvimdiff
+[difftool]
+  prompt = true
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
