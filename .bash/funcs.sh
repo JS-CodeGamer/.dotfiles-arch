@@ -59,22 +59,11 @@ ex() {
 ## help - get help for a command
 ## usage: help <command>
 help() {
-  "$@" --help 2>&1 | bathelp
+  "$@" --help 2>&1 | bat -pl help
 }
 
-## createAlias - create alias for a command if
-##    dependencies exist
-## usage: createAlias <command> [<dep1> ...]
-alias() {
-  if [ $# -eq 0 ]; then
-    echo "usage: createAlias <command> [<dep1 ...>]"
-  fi
-  local aliasCommand=$1
-  shift
-  for dep in $@; do
-    if ! command -v $1 2>&1 >/dev/null; then
-      return 1
-    fi
-  done
-  command alias "$aliasCommand"
+## config - access dotfiles repo same as git
+## usage: config <command>
+config() {
+  git --git-dir="$HOME/.cfg/" --work-tree="$HOME" $@
 }
